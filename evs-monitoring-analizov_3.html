@@ -2,7 +2,9 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="Мониторинг анализов на ГЗТ и курсах ААС — видео-разбор Александра Евсеева и методичка-справочник. Доступ сразу после оплаты, 6 месяцев.">
 <title>Мониторинг анализов EVS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,14 +32,15 @@
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
 body{
   margin:0;background:var(--ink);color:var(--text);
   font-family:var(--f-body);font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  overscroll-behavior-y:none;
 }
-img{max-width:100%}
-a{color:inherit}
+img{max-width:100%;-webkit-tap-highlight-color:transparent}
+a{color:inherit;-webkit-tap-highlight-color:transparent}
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
 .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
@@ -271,7 +274,7 @@ summary:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
 .faq-yes{font-family:var(--f-disp);font-size:20px;color:var(--red);text-transform:uppercase;letter-spacing:.04em}
 
 /* ===== STICKY ===== */
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(8,8,10,.95);border-top:1px solid var(--line);backdrop-filter:blur(10px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(115%);transition:transform .28s ease}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(8,8,10,.95);border-top:1px solid var(--line);backdrop-filter:blur(10px);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;transform:translateY(115%);transition:transform .28s ease}
 .sticky.on{transform:translateY(0)}
 .sticky-price{font-family:var(--f-disp);font-size:21px;font-weight:700;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
 .sticky-price small{display:block;font-family:var(--f-mono);font-size:9px;color:var(--text-3);font-weight:400;letter-spacing:.06em;margin-top:3px}
@@ -391,21 +394,101 @@ details[open] .faq-body{animation:up .35s ease both}
   .quote p{font-size:clamp(16px,5vw,20px)}
   .quotes p{font-size:clamp(16px,5vw,20px)}
   .hero-bg .grid{background-size:48px 48px}
+
+  /* touch targets: ensure interactive elements are at least 44px */
+  .btn{min-height:48px;padding:16px 24px}
+  .btn--wide{min-height:52px;padding:18px 24px}
+  .tagline{padding:10px 14px 10px 12px}
+  .badge{padding:8px 11px}
+  .chip{padding:8px 11px}
+  .summary{min-height:48px;padding:18px 48px 18px 18px;font-size:clamp(15px,4.5vw,18px)}
+  summary::after{right:18px}
+  summary::before{right:23.5px}
+  .faq-body{padding:0 18px 18px}
+
+  /* touch active states */
   .card:active{transform:translateY(-1px)}
   .btn:active{transform:translateY(0) scale(0.98)}
   .flag:active{color:var(--text)}
-  .summary{padding:16px 44px 16px 16px;font-size:clamp(15px,4.5vw,18px)}
-  summary::after{right:16px}
-  summary::before{right:21.5px}
-  .faq-body{padding:0 16px 16px}
-  .row dt{font-size:9px}
-  .row dd{font-size:13px}
-  .marker span{font-size:8.5px}
+
+  /* hero side spacing */
+  .hero-grid{gap:24px}
+  .hero-side{gap:18px}
+  .hero-side .panel{margin-top:8px}
+
+  /* pricebox mobile */
+  .pricebox{flex-wrap:nowrap}
+  .pricebox .now,.pricebox .then{min-width:0;flex:1}
+
+  /* offer specs: stack on very narrow */
+  .offer-specs div{flex-wrap:wrap;gap:4px}
+  .offer-specs dt{flex:1 1 100%}
+  .offer-specs dd{text-align:left;flex:1}
+
+  /* marker grid mobile */
+  .marker{grid-template-columns:90px 1fr}
+
+  /* row mobile */
+  .row{gap:8px;padding:10px 0}
+
+  /* author layout mobile */
+  .author{gap:20px}
+  .author-card li{gap:8px}
+
+  /* nav topbar compact */
+  .topbar .btn{padding:10px 14px;font-size:12px;min-height:40px}
+  .logo{font-size:17px;gap:7px}
+
+  /* topbar price hidden on mobile */
+  .topbar .price-mini{display:none}
+
+  /* callout mobile */
+  .callout{padding:20px 16px}
+
+  /* limits mobile */
+  .limits-grid li{padding:11px 0;font-size:15px}
+
+  /* photo caption mobile */
+  .photo-cap{padding:14px 16px}
   .photo-cap b{font-size:clamp(16px,5vw,20px)}
   .photo-cap span{font-size:9px}
   .panel-title{font-size:clamp(18px,5.5vw,22px)}
   .sec-index{font-size:10px;gap:8px}
   .sec-index::after{display:none}
+
+  /* sticky bar mobile with safe areas */
+  .sticky{padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
+  .sticky-price{font-size:18px}
+  .sticky .btn{min-height:44px}
+
+  /* body safe area bottom for sticky */
+  footer{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+
+  /* prevent horizontal overflow on narrow */
+  .wrap{padding:0 var(--pad)}
+  .stack{gap:20px}
+}
+@media (max-width:380px){
+  :root{--pad:12px}
+  body{font-size:14px}
+  h1{font-size:clamp(26px,9vw,34px)}
+  h2{font-size:clamp(20px,6.5vw,28px)}
+  .hero{padding:64px 0 28px}
+  .hero-sub{font-size:clamp(15px,4.2vw,18px)}
+  .sec{padding:40px 0}
+  .card{padding:18px 14px}
+  .offer{padding:22px 14px}
+  .limits{padding:18px 14px}
+  .flag{font-size:13px;padding:10px 0}
+  .marker-list li{font-size:13px;padding:10px 0 10px 18px}
+  .badges{gap:4px}
+  .badge{font-size:8.5px;padding:5px 8px}
+  .chips{gap:4px}
+  .chip{font-size:9px;padding:6px 8px}
+  .marker{grid-template-columns:76px 1fr}
+  .marker span{font-size:8px}
+  .photo--hero{aspect-ratio:1/1.2}
+  .pricebox .val{font-size:clamp(20px,8vw,28px)}
 }
 @media (min-width:600px){
   .cta{flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px}
@@ -430,6 +513,7 @@ details[open] .faq-body{animation:up .35s ease both}
   footer{padding-bottom:44px}
   .topbar .price-mini{display:block}
   .ticker span{font-size:16px;padding:13px 0}
+  footer{padding-bottom:44px}
 }
 @media (min-width:1000px){
   .hero{padding:140px 0 90px;min-height:90vh;display:flex;align-items:center}
