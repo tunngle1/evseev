@@ -1,0 +1,13 @@
+{
+  "name": "evs-monitoring-analizov",
+  "version": "1.0.0",
+  "description": "Лендинг: Мониторинг анализов на ГЗТ и курсах ААС — Александр Евсеев",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site, no build needed'"
+  },
+  "keywords": ["мониторинг анализов", "ГЗТ", "ААС", "евсеев"],
+  "author": "EVS",
+  "license": "UNLICENSED"
+}
