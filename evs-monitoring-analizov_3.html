@@ -280,6 +280,24 @@ summary:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
 
 .gc-widget{width:100%;overflow:hidden;border-radius:3px}
 
+.pay-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:var(--pad)}
+.pay-modal.is-open{display:flex}
+.pay-modal__backdrop{position:absolute;inset:0;background:rgba(8,8,10,.82);backdrop-filter:blur(6px)}
+.pay-modal__panel{
+  position:relative;z-index:1;width:min(100%,500px);max-height:min(92vh,920px);overflow:auto;
+  background:linear-gradient(155deg,#1F1114 0%,var(--card) 48%,var(--graphite) 100%);
+  border:1px solid var(--line-hi);border-radius:4px;padding:22px 18px 24px;
+  box-shadow:0 50px 100px -40px #000;
+}
+.pay-modal__close{
+  position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border:1px solid var(--line-hi);
+  border-radius:2px;background:rgba(255,255,255,.04);color:var(--text-2);font-size:22px;line-height:1;
+  cursor:pointer;transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.pay-modal__close:hover{background:rgba(255,255,255,.08);color:var(--text);border-color:var(--line-hi)}
+.pay-modal__title{margin:0 0 14px;font-family:var(--f-disp);font-size:clamp(20px,4.5vw,28px);text-transform:uppercase;line-height:1.05}
+body.pay-modal-open{overflow:hidden}
+
 footer{border-top:1px solid var(--line);padding:30px 0 110px;color:var(--text-3);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;line-height:1.7}
 
 .rv{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
@@ -591,7 +609,7 @@ details[open] .faq-body{animation:up .35s ease both}
   <div class="topbar-in">
     <div class="logo"><i></i>EVS</div>
     <p class="price-mini">Мониторинг анализов · <b>2 000 ₽</b> на 4 дня</p>
-    <a class="btn" href="#offer">Получить доступ</a>
+    <a class="btn" href="#pay">Получить доступ</a>
   </div>
 </div>
 
@@ -625,7 +643,7 @@ details[open] .faq-body{animation:up .35s ease both}
       </div>
 
       <div class="cta">
-        <a class="btn" href="#offer">Получить доступ за 2&nbsp;000&nbsp;₽</a>
+        <a class="btn" href="#pay">Получить доступ за 2&nbsp;000&nbsp;₽</a>
         <p class="cta-note">Доступ откроется<br>сразу после оплаты.</p>
       </div>
     </div>
@@ -722,7 +740,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Купить разбор и методичку</a>
+      <a class="btn" href="#pay">Купить разбор и методичку</a>
     </div>
   </div>
 </section>
@@ -774,7 +792,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Разобраться в анализах</a>
+      <a class="btn" href="#pay">Разобраться в анализах</a>
     </div>
   </div>
 </section>
@@ -821,7 +839,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Разобраться в мониторинге</a>
+      <a class="btn" href="#pay">Разобраться в мониторинге</a>
     </div>
   </div>
 </section>
@@ -866,7 +884,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Купить разбор</a>
+      <a class="btn" href="#pay">Купить разбор</a>
     </div>
   </div>
 </section>
@@ -991,7 +1009,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Получить доступ к разбору</a>
+      <a class="btn" href="#pay">Получить доступ к разбору</a>
     </div>
   </div>
 </section>
@@ -1032,7 +1050,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Забрать разбор и материалы</a>
+      <a class="btn" href="#pay">Забрать разбор и материалы</a>
       <p class="cta-note">Формат A4.<br>Печать чёрно-белая подходит.</p>
     </div>
   </div>
@@ -1084,7 +1102,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Получить видео и методичку за 2&nbsp;000&nbsp;₽</a>
+      <a class="btn" href="#pay">Получить видео и методичку за 2&nbsp;000&nbsp;₽</a>
     </div>
   </div>
 </section>
@@ -1183,10 +1201,7 @@ details[open] .faq-body{animation:up .35s ease both}
         <div><dt>Доступ к материалам</dt><dd>6 месяцев</dd></div>
       </dl>
 
-      <!-- Виджет оплаты GetCourse: скрипт должен быть внутри контейнера, не в body -->
-      <div class="gc-widget">
-        <script id="eaefe2729c09d4e67e29cf865c7114f72ee79c2e" src="https://kodtestosterona.online/pl/lite/widget/script?id=1650334"></script>
-      </div>
+      <a class="btn btn--wide" href="#pay">Оплатить и получить доступ</a>
       <p class="offer-foot">Материал доступен 6 месяцев.<br>Цена 2 000 ₽ действует только 4 дня.</p>
     </div>
   </div>
@@ -1282,7 +1297,7 @@ details[open] .faq-body{animation:up .35s ease both}
     </div>
 
     <div class="cta">
-      <a class="btn" href="#offer">Получить доступ за 2&nbsp;000&nbsp;₽</a>
+      <a class="btn" href="#pay">Получить доступ за 2&nbsp;000&nbsp;₽</a>
       <p class="cta-note">Доступ откроется сразу после оплаты.<br>Материал доступен 6 месяцев.</p>
     </div>
   </div>
@@ -1294,7 +1309,18 @@ details[open] .faq-body{animation:up .35s ease both}
 
 <div class="sticky" id="sticky">
   <div class="sticky-price">2&nbsp;000&nbsp;₽<small>потом 2 500 ₽</small></div>
-  <a class="btn" href="#offer">Получить доступ</a>
+  <a class="btn" href="#pay">Получить доступ</a>
+</div>
+
+<div class="pay-modal" id="pay-modal" aria-hidden="true" role="dialog" aria-labelledby="pay-modal-title">
+  <div class="pay-modal__backdrop" data-pay-close></div>
+  <div class="pay-modal__panel">
+    <button type="button" class="pay-modal__close" data-pay-close aria-label="Закрыть">×</button>
+    <p class="pay-modal__title" id="pay-modal-title">Оплата доступа</p>
+    <div class="gc-widget">
+      <script id="eaefe2729c09d4e67e29cf865c7114f72ee79c2e" src="https://kodtestosterona.online/pl/lite/widget/script?id=1650334"></script>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1358,6 +1384,35 @@ details[open] .faq-body{animation:up .35s ease both}
   window.addEventListener('scroll', upd, {passive:true});
   window.addEventListener('resize', upd);
   upd();
+
+  var payModal = document.getElementById('pay-modal');
+  function openPayModal(){
+    if(!payModal) return;
+    payModal.classList.add('is-open');
+    payModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('pay-modal-open');
+  }
+  function closePayModal(){
+    if(!payModal) return;
+    payModal.classList.remove('is-open');
+    payModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('pay-modal-open');
+    if(location.hash === '#pay') history.replaceState(null, '', location.pathname + location.search);
+  }
+  document.querySelectorAll('[href="#pay"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      openPayModal();
+      history.replaceState(null, '', '#pay');
+    });
+  });
+  payModal && payModal.querySelectorAll('[data-pay-close]').forEach(function(el){
+    el.addEventListener('click', closePayModal);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closePayModal();
+  });
+  if(location.hash === '#pay') openPayModal();
 })();
 </script>
 
