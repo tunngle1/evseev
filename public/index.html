@@ -36,7 +36,7 @@ body{
   font-family:var(--f-body);font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-img{display:block;max-width:100%;height:auto;-webkit-tap-highlight-color:transparent}
+img{display:block;max-width:100%;width:auto;height:auto;-webkit-tap-highlight-color:transparent}
 .hero-grid > *, .author > *, .hero-side, .photo{min-width:0;max-width:100%}
 a{color:inherit}
 p{margin:0}
@@ -370,10 +370,11 @@ details[open] .faq-body{animation:up .35s ease both}
   .stack{gap:20px}
 
   /* hero */
-  .hero{padding:64px 0 32px;overflow:hidden}
-  .hero-grid{gap:24px}
-  .hero-grid > *{min-width:0;width:100%}
+  .hero{padding:64px 0 32px;overflow:hidden;width:100%}
+  .hero-grid{gap:24px;width:100%}
+  .hero-grid > *{min-width:0;width:100%;max-width:100%}
   .hero-side{width:100%;max-width:100%}
+  .wrap{width:100%;max-width:100%}
   .hero-copy{gap:16px}
   .hero-sub{font-size:clamp(15px,4.2vw,19px);padding-left:14px}
   .hero .lead{max-width:100%}
