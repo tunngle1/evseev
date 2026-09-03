@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="Мониторинг анализов на ГЗТ и курсах ААС — видео-разбор Александра Евсеева и методичка-справочник. Доступ сразу после оплаты, 6 месяцев.">
 <title>Мониторинг анализов EVS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,15 +30,15 @@
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--ink);color:var(--text);
   font-family:var(--f-body);font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  overscroll-behavior-y:none;
 }
-img{max-width:100%;-webkit-tap-highlight-color:transparent}
-a{color:inherit;-webkit-tap-highlight-color:transparent}
+img{display:block;max-width:100%;height:auto;-webkit-tap-highlight-color:transparent}
+.hero-grid > *, .author > *, .hero-side, .photo{min-width:0;max-width:100%}
+a{color:inherit}
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
 .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
@@ -149,7 +147,7 @@ h1 em{font-style:normal;color:var(--red);display:block}
 /* photo */
 .hero-side{display:flex;flex-direction:column;gap:14px}
 .photo{position:relative;border:1px solid var(--line-hi);border-radius:4px;overflow:hidden;background:var(--card);box-shadow:0 40px 80px -44px #000}
-.photo img{display:block;width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(.94)}
+.photo img{display:block;width:100%;max-width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(.94)}
 .photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 38%,rgba(8,8,10,.92) 100%),linear-gradient(112deg,rgba(224,31,38,.20),transparent 52%)}
 .photo::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,var(--red),var(--red-deep))}
 .photo-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;display:flex;flex-direction:column;gap:5px;z-index:2}
@@ -274,7 +272,7 @@ summary:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
 .faq-yes{font-family:var(--f-disp);font-size:20px;color:var(--red);text-transform:uppercase;letter-spacing:.04em}
 
 /* ===== STICKY ===== */
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(8,8,10,.95);border-top:1px solid var(--line);backdrop-filter:blur(10px);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;transform:translateY(115%);transition:transform .28s ease}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(8,8,10,.95);border-top:1px solid var(--line);backdrop-filter:blur(10px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(115%);transition:transform .28s ease}
 .sticky.on{transform:translateY(0)}
 .sticky-price{font-family:var(--f-disp);font-size:21px;font-weight:700;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
 .sticky-price small{display:block;font-family:var(--f-mono);font-size:9px;color:var(--text-3);font-weight:400;letter-spacing:.06em;margin-top:3px}
@@ -346,153 +344,193 @@ details[open] .faq-body{animation:up .35s ease both}
 .marker-list li{transition:color .2s ease,padding-left .2s ease}
 .marker-list li:hover{color:var(--text);padding-left:32px}
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE — MOBILE ===== */
 @media (max-width:599px){
-  :root{--pad:16px}
-  body{font-size:15px;line-height:1.55}
-  .sec{padding:48px 0}
-  .sec-head{margin-bottom:22px;gap:10px}
-  h1{font-size:clamp(30px,10vw,42px)}
-  h2{font-size:clamp(22px,7vw,32px)}
-  .lead{font-size:clamp(14px,3.6vw,16px)}
-  .hero{padding:72px 0 36px}
-  .hero-sub{font-size:clamp(16px,4.5vw,20px);padding-left:12px}
-  .helm{padding:36px 0}
-  .helm h3{font-size:clamp(20px,7vw,28px)}
-  .card{padding:20px 16px}
-  .offer{padding:24px 16px}
-  .limits{padding:20px 16px}
-  .panel-head{padding:16px}
-  .panel-body{padding:14px 16px 16px}
-  .flag{font-size:14px;padding:12px 0}
-  .flag i{margin-top:6px}
-  .marker-list li{font-size:14px;padding:12px 0 12px 20px}
-  .marker-list li:hover{padding-left:24px}
-  .body-col{font-size:14px}
-  .callout p{font-size:clamp(18px,5vw,22px)}
-  .callout small{font-size:14px}
-  .faq-body{font-size:14px}
-  .offer-specs dd{font-size:15px}
-  .offer-specs dd.big{font-size:clamp(22px,8vw,28px)}
-  .sticky-price{font-size:18px}
-  footer{padding-bottom:90px}
-  .ticker span{font-size:12px;padding:9px 0}
-  .ticker span::after{margin:0 16px}
-  .photo--hero{aspect-ratio:3/4}
-  .photo--author{aspect-ratio:4/3}
-  .author{gap:20px}
-  .author-card li{font-size:14px;padding:10px 0}
-  .chips{gap:5px}
-  .chip{font-size:10px;padding:7px 10px}
-  .badges{gap:6px}
-  .badge{font-size:9.5px;padding:6px 9px;white-space:normal}
-  .pricebox{width:100%;align-self:stretch}
-  .pricebox .now{padding:10px 14px}
-  .pricebox .then{padding:10px 14px}
-  .pricebox .val{font-size:clamp(24px,8vw,32px)}
-  .pricebox .then .val{font-size:clamp(16px,5vw,20px)}
-  .cta-note{font-size:10px}
-  .quotes p{font-size:clamp(16px,5vw,20px)}
-  .hero-bg .grid{background-size:48px 48px}
-  .tagline{align-self:stretch;max-width:100%;font-size:10px;line-height:1.4}
+  :root{--pad:14px}
+  html{-webkit-text-size-adjust:100%}
+  body{font-size:15px;line-height:1.55;overflow-x:hidden}
+  .wrap{padding:0 var(--pad)}
 
-  /* touch targets: ensure interactive elements are at least 44px */
-  .btn{min-height:48px;padding:16px 24px}
-  .btn--wide{min-height:52px;padding:18px 24px}
-  .tagline{padding:10px 14px 10px 12px}
-  .badge{padding:8px 11px}
-  .chip{padding:8px 11px}
-  .summary{min-height:48px;padding:18px 48px 18px 18px;font-size:clamp(15px,4.5vw,18px)}
-  summary::after{right:18px}
-  summary::before{right:23.5px}
-  .faq-body{padding:0 18px 18px}
+  /* typography */
+  h1{font-size:clamp(28px,9vw,40px);line-height:1.04}
+  h2{font-size:clamp(21px,6.5vw,30px)}
+  h3{font-size:clamp(18px,6vw,26px)}
+  .lead{font-size:15px;line-height:1.55}
+  .lead strong{font-weight:600}
+  .mono{font-size:10px;letter-spacing:.14em}
+  p{font-size:15px}
 
-  /* touch active states */
-  .card:active{transform:translateY(-1px)}
-  .btn:active{transform:translateY(0) scale(0.98)}
-  .flag:active{color:var(--text)}
+  /* sections */
+  .sec{padding:40px 0}
+  .sec-head{margin-bottom:20px;gap:8px}
+  .sec-head h2{word-break:break-word}
+  .sec-head--stack h2{word-break:break-word}
+  .sec-index{font-size:10px;gap:6px}
+  .sec-index::after{display:none}
+  .stack{gap:20px}
 
-  /* hero side spacing */
+  /* hero */
+  .hero{padding:64px 0 32px;overflow:hidden}
   .hero-grid{gap:24px}
-  .hero-side{gap:18px}
-  .hero-side .panel{margin-top:8px}
+  .hero-grid > *{min-width:0;width:100%}
+  .hero-side{width:100%;max-width:100%}
+  .hero-copy{gap:16px}
+  .hero-sub{font-size:clamp(15px,4.2vw,19px);padding-left:14px}
+  .hero .lead{max-width:100%}
+  .hero-bg .grid{background-size:48px 48px;inset:-20% -20% 0 -20%}
+  .hero-bg .glow{width:70vw;height:70vw;right:-28%;top:-18%}
+  .hero-bg .slash{left:-20%;bottom:-40%;width:140%}
 
-  /* pricebox mobile */
-  .pricebox{flex-wrap:nowrap}
-  .pricebox .now,.pricebox .then{min-width:0;flex:1}
+  /* tagline */
+  .tagline{font-size:9px;padding:6px 10px 6px 9px;gap:7px;letter-spacing:.1em}
 
-  /* offer specs: stack on very narrow */
-  .offer-specs div{flex-wrap:wrap;gap:4px}
-  .offer-specs dt{flex:1 1 100%}
-  .offer-specs dd{text-align:left;flex:1}
+  /* badges */
+  .badges{gap:5px}
+  .badge{font-size:9px;padding:5px 8px;letter-spacing:.06em}
 
-  /* marker grid mobile */
-  .marker{grid-template-columns:90px 1fr}
+  /* pricebox */
+  .pricebox{flex-direction:row;width:100%}
+  .pricebox .now{padding:12px 14px;flex:1}
+  .pricebox .then{padding:12px 14px}
+  .pricebox .lbl{font-size:8.5px}
+  .pricebox .val{font-size:clamp(22px,7.5vw,30px)}
+  .pricebox .then .val{font-size:clamp(15px,4.5vw,19px)}
 
-  /* row mobile */
-  .row{gap:8px;padding:10px 0;flex-wrap:wrap}
-  .row dd{text-align:left}
+  /* cta */
+  .cta{gap:8px;padding-top:4px}
+  .cta .btn{width:100%;padding:16px 20px;font-size:clamp(14px,3.8vw,16px)}
+  .cta-note{font-size:10px;line-height:1.5}
 
-  /* author layout mobile */
-  .author{gap:20px}
-  .author-card li{gap:8px}
+  /* buttons */
+  .btn{padding:16px 20px;font-size:clamp(14px,3.8vw,16px);gap:10px}
+  .btn:active{transform:translateY(0) scale(0.97)}
 
-  /* nav topbar compact */
-  .topbar{padding:10px var(--pad)}
-  .topbar .btn{padding:10px 14px;font-size:12px;min-height:40px;white-space:nowrap}
-  .logo{font-size:17px;gap:7px;flex-shrink:0}
-
-  /* topbar price hidden on mobile */
-  .topbar .price-mini{display:none}
-
-  /* callout mobile */
-  .callout{padding:20px 16px}
-
-  /* limits mobile */
-  .limits-grid li{padding:11px 0;font-size:15px}
-
-  /* photo caption mobile */
+  /* photo */
+  .hero-side{gap:12px}
+  .photo--hero{aspect-ratio:4/5}
+  .photo--author{aspect-ratio:3/2}
   .photo-cap{padding:14px 16px}
   .photo-cap b{font-size:clamp(16px,5vw,20px)}
-  .photo-cap span{font-size:9px}
-  .panel-title{font-size:clamp(18px,5.5vw,22px)}
-  .sec-index{font-size:10px;gap:8px}
-  .sec-index::after{display:none}
+  .photo-cap span{font-size:9px;letter-spacing:.12em}
 
-  /* sticky bar mobile with safe areas */
-  .sticky{padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}
-  .sticky-price{font-size:18px}
-  .sticky .btn{min-height:44px}
+  /* panel */
+  .panel{box-shadow:0 20px 50px -30px #000}
+  .panel-head{padding:16px 16px 12px;gap:8px}
+  .panel-body{padding:12px 16px 16px}
+  .panel-title{font-size:clamp(17px,5.2vw,21px)}
+  .row{padding:10px 0;gap:8px}
+  .row dt{font-size:9px;letter-spacing:.08em}
+  .row dd{font-size:13px}
+  .markers{gap:7px;padding:10px 0 0}
+  .marker{grid-template-columns:80px 1fr;gap:8px}
+  .marker span{font-size:8px;letter-spacing:.06em}
+  .bar{height:4px}
+  .tags{gap:4px}
+  .tag{font-size:9px;padding:5px 8px}
 
-  /* body safe area bottom for sticky */
-  footer{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+  /* body-col */
+  .body-col{gap:12px;font-size:15px;max-width:100%}
 
-  /* prevent horizontal overflow on narrow */
-  .wrap{padding:0 var(--pad)}
-  .stack{gap:20px}
+  /* lists */
+  .marker-list{max-width:100%}
+  .marker-list li{font-size:15px;padding:12px 0 12px 22px;line-height:1.5}
+  .marker-list li::before{top:22px;width:10px}
+
+  /* quotes */
+  .quotes{padding-left:18px}
+  .quotes p{font-size:clamp(16px,5vw,21px);padding:7px 0}
+
+  /* callout */
+  .callout{padding:20px 16px;gap:10px}
+  .callout p{font-size:clamp(17px,5vw,22px)}
+  .callout small{font-size:14px;line-height:1.5}
+
+  /* chips */
+  .chips{gap:5px}
+  .chip{font-size:9.5px;padding:6px 9px;letter-spacing:.05em}
+
+  /* cards */
+  .grid{gap:10px}
+  .card{padding:18px 16px;gap:10px}
+  .card p{font-size:14px;line-height:1.5}
+  .card-num{font-size:10px}
+  .card-title{font-size:clamp(16px,4.4vw,19px);line-height:1.2}
+  .card-meta{font-size:10px;padding:8px 0}
+  .card:active{transform:translateY(-1px)}
+
+  /* flags */
+  .flags{gap:0}
+  .flag{font-size:14px;padding:13px 0;gap:12px;line-height:1.45}
+  .flag i{margin-top:7px;width:8px;height:8px}
+  .flag:hover{transform:none}
+
+  /* limits */
+  .limits{padding:18px 16px;gap:14px}
+  .limits-grid li{font-size:14px;padding:11px 0;gap:10px}
+  .limits-grid li::before{font-size:13px;line-height:1.4}
+
+  /* author */
+  .author{gap:20px}
+  .author-card{padding:18px 16px}
+  .author-card li{font-size:14px;padding:11px 0;gap:10px}
+  .author-card li b{font-size:9px;padding-top:3px;flex:0 0 22px}
+
+  /* offer */
+  .offer{padding:22px 16px;gap:20px}
+  .offer-title{font-size:clamp(20px,6vw,28px)}
+  .offer-specs{border-top:1px solid var(--line-hi)}
+  .offer-specs div{padding:12px 0;gap:10px}
+  .offer-specs dt{font-size:9.5px}
+  .offer-specs dd{font-size:15px}
+  .offer-specs dd.big{font-size:clamp(22px,7.5vw,30px)}
+  .offer-foot{font-size:10px;line-height:1.7}
+
+  /* faq */
+  .faq{gap:8px;max-width:100%}
+  summary{padding:16px 42px 16px 16px;font-size:clamp(15px,4.2vw,18px);line-height:1.3}
+  summary::after{right:16px;width:11px}
+  summary::before{right:20.5px;width:2px;height:11px}
+  .faq-body{padding:0 16px 16px;font-size:14px;gap:6px}
+  .faq-yes{font-size:17px}
+
+  /* ticker */
+  .ticker span{font-size:11px;padding:9px 0;letter-spacing:.06em}
+  .ticker span::after{margin:0 14px;font-size:6px}
+
+  /* helm */
+  .helm{padding:32px 0}
+  .helm-in{gap:12px}
+  .helm h3{font-size:clamp(18px,6.5vw,26px)}
+  .helm p{font-size:15px}
+
+  /* topbar */
+  .topbar{padding:10px var(--pad)}
+  .topbar-in{gap:10px}
+  .logo{font-size:16px;gap:7px}
+  .logo i{width:7px;height:7px}
+  .topbar .btn{padding:10px 14px;font-size:12px;border-radius:2px}
+
+  /* sticky */
+  .sticky{padding:8px 12px calc(8px + env(safe-area-inset-bottom));gap:10px}
+  .sticky-price{font-size:17px}
+  .sticky-price small{font-size:8px;margin-top:2px}
+  .sticky .btn{padding:12px 12px;font-size:13px}
+
+  /* footer */
+  footer{padding:24px 0 100px;font-size:10px}
+
+  /* rows */
+  .rows .row{padding:10px 0}
 }
-@media (max-width:380px){
-  :root{--pad:12px}
-  body{font-size:14px}
-  h1{font-size:clamp(26px,9vw,34px)}
-  h2{font-size:clamp(20px,6.5vw,28px)}
-  .hero{padding:64px 0 28px}
-  .hero-sub{font-size:clamp(15px,4.2vw,18px)}
-  .sec{padding:40px 0}
-  .card{padding:18px 14px}
-  .offer{padding:22px 14px}
-  .limits{padding:18px 14px}
-  .flag{font-size:13px;padding:10px 0}
-  .marker-list li{font-size:13px;padding:10px 0 10px 18px}
-  .badges{gap:4px}
-  .badge{font-size:8.5px;padding:5px 8px}
-  .chips{gap:4px}
-  .chip{font-size:9px;padding:6px 8px}
-  .marker{grid-template-columns:76px 1fr}
-  .marker span{font-size:8px}
-  .photo--hero{aspect-ratio:1/1.2}
-  .pricebox .val{font-size:clamp(20px,8vw,28px)}
-  .topbar .btn{padding:10px 12px;font-size:11px}
+
+/* tablet bump */
+@media (min-width:600px){
+  .cta{flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px}
+  .cta .btn{width:auto}
+  .grid{grid-template-columns:1fr 1fr}
+  .dot-list{grid-template-columns:1fr 1fr;gap:11px 32px}
+  .limits-grid{grid-template-columns:1fr 1fr;gap:0 32px}
+  .flags{grid-template-columns:1fr 1fr;gap:0 32px}
 }
 @media (min-width:600px){
   .cta{flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px}

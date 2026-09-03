@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Мониторинг анализов на ГЗТ и курсах ААС — видео-разбор Александра Евсеева и методичка-справочник. Доступ сразу после оплаты, 6 месяцев.">
 <title>Мониторинг анализов EVS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,8 @@ body{
   font-family:var(--f-body);font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-img{max-width:100%}
+img{display:block;max-width:100%;height:auto;-webkit-tap-highlight-color:transparent}
+.hero-grid > *, .author > *, .hero-side, .photo{min-width:0;max-width:100%}
 a{color:inherit}
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
@@ -146,7 +147,7 @@ h1 em{font-style:normal;color:var(--red);display:block}
 /* photo */
 .hero-side{display:flex;flex-direction:column;gap:14px}
 .photo{position:relative;border:1px solid var(--line-hi);border-radius:4px;overflow:hidden;background:var(--card);box-shadow:0 40px 80px -44px #000}
-.photo img{display:block;width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(.94)}
+.photo img{display:block;width:100%;max-width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(.94)}
 .photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 38%,rgba(8,8,10,.92) 100%),linear-gradient(112deg,rgba(224,31,38,.20),transparent 52%)}
 .photo::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,var(--red),var(--red-deep))}
 .photo-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;display:flex;flex-direction:column;gap:5px;z-index:2}
@@ -371,6 +372,8 @@ details[open] .faq-body{animation:up .35s ease both}
   /* hero */
   .hero{padding:64px 0 32px;overflow:hidden}
   .hero-grid{gap:24px}
+  .hero-grid > *{min-width:0;width:100%}
+  .hero-side{width:100%;max-width:100%}
   .hero-copy{gap:16px}
   .hero-sub{font-size:clamp(15px,4.2vw,19px);padding-left:14px}
   .hero .lead{max-width:100%}
