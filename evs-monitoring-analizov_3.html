@@ -356,7 +356,7 @@ details[open] .faq-body{animation:up .35s ease both}
   h2{font-size:clamp(22px,7vw,32px)}
   .lead{font-size:clamp(14px,3.6vw,16px)}
   .hero{padding:72px 0 36px}
-  .hero-sub{font-size:clamp(16px,4.5vw,20px)}
+  .hero-sub{font-size:clamp(16px,4.5vw,20px);padding-left:12px}
   .helm{padding:36px 0}
   .helm h3{font-size:clamp(20px,7vw,28px)}
   .card{padding:20px 16px}
@@ -385,15 +385,16 @@ details[open] .faq-body{animation:up .35s ease both}
   .chips{gap:5px}
   .chip{font-size:10px;padding:7px 10px}
   .badges{gap:6px}
-  .badge{font-size:9.5px;padding:6px 9px}
+  .badge{font-size:9.5px;padding:6px 9px;white-space:normal}
+  .pricebox{width:100%;align-self:stretch}
   .pricebox .now{padding:10px 14px}
   .pricebox .then{padding:10px 14px}
   .pricebox .val{font-size:clamp(24px,8vw,32px)}
   .pricebox .then .val{font-size:clamp(16px,5vw,20px)}
   .cta-note{font-size:10px}
-  .quote p{font-size:clamp(16px,5vw,20px)}
   .quotes p{font-size:clamp(16px,5vw,20px)}
   .hero-bg .grid{background-size:48px 48px}
+  .tagline{align-self:stretch;max-width:100%;font-size:10px;line-height:1.4}
 
   /* touch targets: ensure interactive elements are at least 44px */
   .btn{min-height:48px;padding:16px 24px}
@@ -429,15 +430,17 @@ details[open] .faq-body{animation:up .35s ease both}
   .marker{grid-template-columns:90px 1fr}
 
   /* row mobile */
-  .row{gap:8px;padding:10px 0}
+  .row{gap:8px;padding:10px 0;flex-wrap:wrap}
+  .row dd{text-align:left}
 
   /* author layout mobile */
   .author{gap:20px}
   .author-card li{gap:8px}
 
   /* nav topbar compact */
-  .topbar .btn{padding:10px 14px;font-size:12px;min-height:40px}
-  .logo{font-size:17px;gap:7px}
+  .topbar{padding:10px var(--pad)}
+  .topbar .btn{padding:10px 14px;font-size:12px;min-height:40px;white-space:nowrap}
+  .logo{font-size:17px;gap:7px;flex-shrink:0}
 
   /* topbar price hidden on mobile */
   .topbar .price-mini{display:none}
@@ -489,6 +492,7 @@ details[open] .faq-body{animation:up .35s ease both}
   .marker span{font-size:8px}
   .photo--hero{aspect-ratio:1/1.2}
   .pricebox .val{font-size:clamp(20px,8vw,28px)}
+  .topbar .btn{padding:10px 12px;font-size:11px}
 }
 @media (min-width:600px){
   .cta{flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px}
@@ -513,7 +517,6 @@ details[open] .faq-body{animation:up .35s ease both}
   footer{padding-bottom:44px}
   .topbar .price-mini{display:block}
   .ticker span{font-size:16px;padding:13px 0}
-  footer{padding-bottom:44px}
 }
 @media (min-width:1000px){
   .hero{padding:140px 0 90px;min-height:90vh;display:flex;align-items:center}
